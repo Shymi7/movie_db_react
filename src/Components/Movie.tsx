@@ -23,7 +23,7 @@ type MovieData = {
 export const Movie: React.FC<{ data: MovieData }> = ({ data }) => {
 
     return(
-        <Container className='my-4 d-flex'>
+        <Container className='my-4 d-flex border rounded border-dark overflow-hidden p-0'>
             <Card.Img className='w-25' src={moviePlaceholder}/>
             <Container className='w-50 mx-2 my-3'>
                 <Card.Title>
@@ -35,7 +35,11 @@ export const Movie: React.FC<{ data: MovieData }> = ({ data }) => {
                 </Card.Body>
             </Container>
             <Container className='w-25 d-flex flex-column justify-content-center'>
-                <h3>{data.rating}</h3><br/>
+                <h3>
+                    <span className="text-warning">&#9733;</span>
+                    {data.rating}
+                </h3>
+                <br/>
                 <span className='font-color-grey-light'>{data.reviewCount}</span>
             </Container>
 
