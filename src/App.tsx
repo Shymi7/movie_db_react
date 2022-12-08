@@ -1,11 +1,15 @@
 import React from 'react';
 import './Styles/style.css';
-import moviesData from "./Data/moviesData";
+import {NavBar} from "./Components/NavBar";
+import {MoviesList} from "./Components/MoviesList";
+import {Footer} from "./Components/Footer";
 
 function App() {
   return (
     <div>
-        asdf
+        <NavBar/>
+        <MoviesList/>
+        <Footer/>
     </div>
   );
 }

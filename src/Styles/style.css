@@ -1,5 +1,12 @@
 body {
-  background-color: #056459;
+  background-color: #171717;
+}
+body .moviesList-title {
+  display: flex;
+  justify-content: center;
+}
+body .font-color-grey-light {
+  color: #707070;
 }
 
 /*# sourceMappingURL=style.css.map */
