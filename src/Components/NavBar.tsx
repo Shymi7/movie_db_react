@@ -1,21 +1,49 @@
 import React from "react";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Alert, Button, Navbar, Container, Nav} from "react-bootstrap";
+import {Container, Nav, Navbar} from "react-bootstrap";
+// import { LinkContainer } from 'react-router-bootstrap'
 
+import { Link } from "react-router-dom";
 
+interface LinkContent {
+    address: string;
+    text: string;
+}
 
-export const NavBar:React.FC = () =>{
+interface Props {
+    links: LinkContent[];
+}
+
+export const NavBar: React.FC<Props> = ({links}) => {
+    const linkElements = links.map((link) => {
+        return (
+            <Nav.Item>
+                <Link className={"nav-link"} to={link.address} key={link.address}>
+                    {link.text}
+                </Link>
+
+            </Nav.Item>
+
+            // <Link to={link.address} key={link.address}>
+            //{link.text}
+            // </Link>
+        );
+    });
+
     return (
         <Navbar bg="dark" variant="dark" className='d-flex justify-content-end'>
             <Container className='wi'>
-                <Navbar.Brand href="#home">Movie DB</Navbar.Brand>
+                <Navbar.Brand>
+                    <Link className={"nav-link"} to="moviesList">
+                        Movie DB
+                    </Link>
+                </Navbar.Brand>
             </Container>
             <Container className='w-25'>
-                <Nav className="me-auto" >
-                    <Nav.Link href="#home">Login</Nav.Link>
-                    <Nav.Link href="#features">Ranking</Nav.Link>
-                    <Nav.Link href="#pricing">Search</Nav.Link>
+                <Nav className="me-auto">
+                    {linkElements}
+
                 </Nav>
             </Container>
         </Navbar>
