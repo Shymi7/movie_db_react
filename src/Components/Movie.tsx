@@ -12,35 +12,25 @@ import moviePlaceholder from "../Images/movie-placeholder.png";
 //     img: string,
 // }
 
-type MovieData = {
+export type MovieData = {
     title: string;
-    director: string;
-    rating: number;
-    reviewCount: number;
-    year: number;
+    content: string;
+    image: string;
+    id:string;
 };
 
 export const Movie: React.FC<{ data: MovieData }> = ({ data }) => {
 
     return(
         <Container className='my-4 d-flex border rounded border-dark overflow-hidden p-0'>
-            <Card.Img className='w-25' src={moviePlaceholder}/>
+            <Card.Img className='w-25' src={data.image}/>
             <Container className='w-50 mx-2 my-3'>
                 <Card.Title>
                     <span>{data.title}</span>
-                    <span className='font-color-grey-light'> ({data.year})</span>
                 </Card.Title>
                 <Card.Body>
-                    Director: {data.director}
+                    {data.content}
                 </Card.Body>
-            </Container>
-            <Container className='w-25 d-flex flex-column justify-content-center'>
-                <h3>
-                    <span className="text-warning">&#9733;</span>
-                    {data.rating}
-                </h3>
-                <br/>
-                <span className='font-color-grey-light'>{data.reviewCount}</span>
             </Container>
 
         </Container>
