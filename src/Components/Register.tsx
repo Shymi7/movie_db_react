@@ -3,9 +3,27 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import axios from "axios";
 
 
 export const Register:React.FC = () =>{
+
+    // axios.post('https://at.usermd.net/api/movies', {
+    //     title: 'Fred',
+    //     image: 'Flintstone',
+    //     content:
+    // })
+    //     .then(function (response) {
+    //         console.log(response);
+    //     })
+    //     .catch(function (error) {
+    //         console.log(error);
+    //     });
+
+
+
+
+
     return (
         <div className={"login-container d-flex justify-content-center"}>
             <Form className={"w-25 my-5"}>
