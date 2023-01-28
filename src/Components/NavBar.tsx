@@ -18,8 +18,8 @@ interface Props {
 export const NavBar: React.FC<Props> = ({links}) => {
     const linkElements = links.map((link) => {
         return (
-            <Nav.Item>
-                <Link className={"nav-link"} to={link.address} key={link.address}>
+            <Nav.Item  key={link.address}>
+                <Link className={"nav-link"} to={link.address}>
                     {link.text}
                 </Link>
 
