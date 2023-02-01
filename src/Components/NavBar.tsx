@@ -3,27 +3,35 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Container, Nav, Navbar} from "react-bootstrap";
 // import { LinkContainer } from 'react-router-bootstrap'
+import {Link} from "react-router-dom";
 
-import { Link } from "react-router-dom";
 
-interface LinkContent {
-    address: string;
-    text: string;
-}
 
 interface Props {
-    links: LinkContent[];
+    links: {
+        address?: string;
+        text: string;
+        fun?: () => void; // :(
+    }[];
 }
 
 export const NavBar: React.FC<Props> = ({links}) => {
+
+
     const linkElements = links.map((link) => {
         return (
-            <Nav.Item  key={link.address}>
-                <Link className={"nav-link"} to={link.address}>
-                    {link.text}
-                </Link>
-
-            </Nav.Item>
+            link.address ? //normal links
+                <Nav.Item key={link.address}>
+                    <Link className={"nav-link"} to={link.address}>
+                        {link.text}
+                    </Link>
+                </Nav.Item>
+                : //link to log out
+                <Nav.Item key={link.address}>
+                    <Link className={"nav-link"} to={'moviesList'} onClick={link.fun}>
+                        {link.text}
+                    </Link>
+                </Nav.Item>
 
             // <Link to={link.address} key={link.address}>
             //{link.text}

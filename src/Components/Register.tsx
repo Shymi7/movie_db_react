@@ -29,6 +29,7 @@ export const Register: React.FC = () => {
             'password': password
         })
             .then(function (response) {
+                localStorage.setItem("userLoginData", JSON.stringify({login, password}));
                 console.log(response.data);
             })
             .catch(function (error) {
@@ -36,7 +37,7 @@ export const Register: React.FC = () => {
             });
     }
 
-    function validateForm() {
+    function validateForm(): void {
 
         const minNameLength = 5;
         const minPasswordLength = 10;

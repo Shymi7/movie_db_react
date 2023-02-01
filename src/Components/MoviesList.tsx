@@ -10,7 +10,6 @@ export function MoviesList(props: any) {
     useEffect(()=>{
         axios.get('https://at.usermd.net/api/movies')
             .then((response: any)=>{
-                console.log(response.data[5]);
                 setMoviesData(response.data)
             })
     }, [])

@@ -12,18 +12,24 @@ import {MoviesList} from "./Components/MoviesList";
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+
+
 root.render(
   <React.StrictMode>
-      <BrowserRouter>
-          <Routes>
-              <Route  path="/" element={<App />}>
-                  <Route path="moviesList" element={<MoviesList/>}/>
-                  <Route path="register" element={<Register/>}/>
-                  <Route path="login" element={<Login/>}/>
-                  <Route path="addMovie" element={<AddMovie/>}/>
-              </Route>
-          </Routes>
-      </BrowserRouter>
+
+        <BrowserRouter>
+            <Routes>
+                <Route  path="/" element={<App />}>
+                    <Route path="moviesList" element={<MoviesList/>}/>
+                    <Route path="register" element={<Register/>}/>
+                    <Route path="login" element={<Login/>}/>
+                    <Route path="addMovie" element={<AddMovie/>}/>
+                </Route>
+            </Routes>
+        </BrowserRouter>
+
+
   </React.StrictMode>
 );
 
