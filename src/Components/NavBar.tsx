@@ -5,8 +5,6 @@ import {Container, Nav, Navbar} from "react-bootstrap";
 // import { LinkContainer } from 'react-router-bootstrap'
 import {Link} from "react-router-dom";
 
-
-
 interface Props {
     links: {
         address?: string;
@@ -27,15 +25,11 @@ export const NavBar: React.FC<Props> = ({links}) => {
                     </Link>
                 </Nav.Item>
                 : //link to log out
-                <Nav.Item key={link.address}>
+                <Nav.Item key={'login'}>
                     <Link className={"nav-link"} to={'moviesList'} onClick={link.fun}>
                         {link.text}
                     </Link>
                 </Nav.Item>
-
-            // <Link to={link.address} key={link.address}>
-            //{link.text}
-            // </Link>
         );
     });
 
@@ -43,7 +37,7 @@ export const NavBar: React.FC<Props> = ({links}) => {
         <Navbar bg="dark" variant="dark" className='d-flex justify-content-end'>
             <Container className='wi'>
                 <Navbar.Brand>
-                    <Link className={"nav-link"} to="moviesList">
+                    <Link key="logo" className={"nav-link"} to="moviesList">
                         Movie DB
                     </Link>
                 </Navbar.Brand>

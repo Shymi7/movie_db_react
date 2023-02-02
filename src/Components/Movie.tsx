@@ -1,28 +1,36 @@
-import React from "react";
-import {Card, Container, Image} from "react-bootstrap";
+import React, {useState} from "react";
+import {Card, Container} from "react-bootstrap";
+import {useNavigate} from "react-router-dom";
 
-import moviePlaceholder from "../Images/movie-placeholder.png";
-
-// interface Props {
-//     title: string,
-//     rating: number,
-//     reviewCount: number,
-//     genre: string,
-//     director: string,
-//     img: string,
-// }
 
 export type MovieData = {
     title: string;
     content: string;
     image: string;
-    id:string;
+    id: string;
 };
 
-export const Movie: React.FC<{ data: MovieData }> = ({ data }) => {
+export const Movie: React.FC<{ data: MovieData }> = ({data}) => {
 
-    return(
-        <Container className='my-4 d-flex border rounded border-dark overflow-hidden p-0'>
+    const [isMovieHighlighted, setIsMovieHighlighted] = useState(false);
+
+    const defaultStyle = 'my-4 d-flex border rounded border-dark overflow-hidden p-0';
+    const highlightedStyle = 'my-4 d-flex border rounded border-success border-4 overflow-hidden p-0';
+
+    const navigate = useNavigate();
+
+    return (
+        <Container className={isMovieHighlighted ? highlightedStyle : defaultStyle}
+                   onClick={() => {
+                       navigate('movieDetails/' + data.id)
+                   }}
+                   onMouseEnter={() => {
+                       setIsMovieHighlighted(true);
+                   }}
+                   onMouseLeave={() => {
+                       setIsMovieHighlighted(false);
+                   }}
+        >
             <Card.Img className='w-25' src={data.image}/>
             <Container className='w-50 mx-2 my-3'>
                 <Card.Title>

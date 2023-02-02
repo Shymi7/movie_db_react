@@ -23,18 +23,15 @@ export const Login: React.FC = () => {
             'password': password
         })
             .then(function (response) {
-                //console.log(response.data);
-                localStorage.setItem("userLoginData", JSON.stringify({login, password}));
-
+                localStorage.setItem("userLoginData", response.data.token);
                 navigate('/moviesList');
-                //redirect('/addMovie');
                 window.location.reload();
             })
             .catch(function (error) {
                 setErrorDisplay('Logowanie nie powiodło się.')
-                //console.log(error);
+                console.log(error);
             });
-        //console.log('asdfasd');
+
     }
 
 

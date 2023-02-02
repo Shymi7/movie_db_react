@@ -8,6 +8,7 @@ import {Register} from "./Components/Register";
 import {Login} from "./Components/Login";
 import {AddMovie} from "./Components/AddMovie";
 import {MoviesList} from "./Components/MoviesList";
+import {MovieDetails} from "./Components/MovieDetails";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -25,6 +26,7 @@ root.render(
                     <Route path="register" element={<Register/>}/>
                     <Route path="login" element={<Login/>}/>
                     <Route path="addMovie" element={<AddMovie/>}/>
+                    <Route path="moviesList/movieDetails/:id" element={<MovieDetails/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>

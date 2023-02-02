@@ -7,14 +7,12 @@ export function MoviesList(props: any) {
 
     const [moviesData, setMoviesData] = useState<MovieData[]>([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         axios.get('https://at.usermd.net/api/movies')
-            .then((response: any)=>{
+            .then((response: any) => {
                 setMoviesData(response.data)
             })
     }, [])
-
-
 
     const MoviesComponents = moviesData.map(movie => {
         return (

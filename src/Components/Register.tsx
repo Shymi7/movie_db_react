@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import {Alert} from "react-bootstrap";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 
 export const Register: React.FC = () => {
@@ -18,6 +19,8 @@ export const Register: React.FC = () => {
     const [password, setPassword] = useState('')
     const [repeatedPassword, setRepeatedPassword] = useState('')
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         validateForm();
     })
@@ -30,7 +33,8 @@ export const Register: React.FC = () => {
         })
             .then(function (response) {
                 localStorage.setItem("userLoginData", JSON.stringify({login, password}));
-                console.log(response.data);
+                navigate('/moviesList');
+                window.location.reload();
             })
             .catch(function (error) {
                 console.log(error);
@@ -38,12 +42,10 @@ export const Register: React.FC = () => {
     }
 
     function validateForm(): void {
-
         const minNameLength = 5;
         const minPasswordLength = 10;
 
         setIsFormValid(false);
-
 
         //break if all inputs are empty
         if (login === '' && email === '' && password === '' && repeatedPassword === '')
@@ -81,7 +83,6 @@ export const Register: React.FC = () => {
 
         setErrorDisplay('');
         setIsFormValid(true);
-
     }
 
     return (
@@ -114,17 +115,15 @@ export const Register: React.FC = () => {
                         setRepeatedPassword(e.target.value);
                     }} name={'repeatedPassword'} type="password" placeholder="Hasło"/>
                 </Form.Group>
-
                 {
                     isFormValid ?
                         <Button onClick={sendForm} variant="primary" type="button">
-                            Submit
+                            Zarejestruj się
                         </Button> :
                         <Button variant="primary" type="button" disabled>
-                            Submit
+                            Zarejestruj się
                         </Button>
                 }
-
             </Form>
             {
                 errorDisplay !== '' &&
