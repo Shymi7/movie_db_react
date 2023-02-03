@@ -21,9 +21,6 @@ export function MoviesList(props: any) {
     });
     return (
         <>
-            <Container className="moviesList-title m-4">
-                <h1>Movies List</h1>
-            </Container>
             <Container className="w-50">
                 {MoviesComponents}
             </Container>

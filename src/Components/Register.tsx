@@ -32,7 +32,7 @@ export const Register: React.FC = () => {
             'password': password
         })
             .then(function (response) {
-                localStorage.setItem("userLoginData", JSON.stringify({login, password}));
+                // localStorage.setItem("userLoginData", JSON.stringify({login, password}));
                 navigate('/moviesList');
                 window.location.reload();
             })
