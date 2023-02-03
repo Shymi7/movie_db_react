@@ -47,7 +47,7 @@ export const MovieDetails: React.FC = () => {
                     </Card.Body>
                     {
                         // @ts-ignore
-                        (decodedToken !== null && decodedToken.isAdmin && !isExpired) &&
+                        (decodedToken !== null && decodedToken.isAdmin && !isExpired && !isMovieDeleted) &&
                         <Button variant='secondary' onClick={() => {
                             axios.delete('https://at.usermd.net/api/movie/' + id)
                                 .then((response: any) => {
@@ -57,14 +57,15 @@ export const MovieDetails: React.FC = () => {
                             Usuń film
                         </Button>
                     }
+                    {
+                        isMovieDeleted &&
+                        <Alert className={'w-100'} variant={'danger'}>
+                            Film został usunięty
+                        </Alert>
+                    }
                 </Container>
 
-                {
-                    isMovieDeleted &&
-                    <Alert className={'w-25'} variant={'danger'}>
-                        Film został usunięty
-                    </Alert>
-                }
+
 
             </Container>
     );

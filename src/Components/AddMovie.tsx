@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import {Alert} from "react-bootstrap";
+import {useNavigate} from "react-router-dom";
 
 export const AddMovie: React.FC = () => {
     const [errorDisplay, setErrorDisplay] = useState('');
@@ -14,6 +15,10 @@ export const AddMovie: React.FC = () => {
     const [name, setName] = useState('');
     const [url, setUrl] = useState('')
     const [description, setDescription] = useState('')
+
+
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         validateForm();
@@ -47,21 +52,17 @@ export const AddMovie: React.FC = () => {
     }
 
 
-    const sendForm = (e: React.FormEvent): void => {
-        e.preventDefault();
-        const target = e.target as typeof e.target & {
-            title: { value: string };
-            image: { value: string };
-            content: { value: string };
-        };
+    const sendForm = (): void => {
 
         axios.post('https://at.usermd.net/api/movies', {
-            title: target.title.value,
-            image: target.image.value,
-            content: target.content.value
+            title: name,
+            image: url,
+            content: description
         })
             .then(function (response) {
                 console.log(response);
+                navigate('/moviesList');
+                window.location.reload();
             })
             .catch(function (error) {
                 console.log(error);
