@@ -10,19 +10,19 @@ export default function App() {
 
     const links = localStorage.getItem("userLoginData") !== null ?
         [
-            {address: "moviesList", text: "Lista filmów"},
-            {address: "addMovie", text: "Dodaj film"},
+            {address: "moviesList", text: "Movie DB"},
+            {address: "addMovie", text: "Add Movie"},
             {
-                text: "Wyloguj się", fun: (): void => {
+                text: "Log out", fun: (): void => {
                     localStorage.clear();
                     window.location.reload();
                 }
             },
         ] :
         [
-            {address: "moviesList", text: "Lista filmów"},
-            {address: "register", text: "Zarejestruj się"},
-            {address: "login", text: "Zaloguj się"},
+            {address: "moviesList", text: "Movies list"},
+            {address: "register", text: "Sign in"},
+            {address: "login", text: "Log in"},
         ];
 
     return (

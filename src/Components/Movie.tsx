@@ -19,6 +19,8 @@ export const Movie: React.FC<{ data: MovieData }> = ({data}) => {
 
     const navigate = useNavigate();
 
+    const imageUrl = require(`../Images/${data.id}.png`);
+
     return (
         <Container className={isMovieHighlighted ? highlightedStyle : defaultStyle}
                    onClick={() => {
@@ -31,7 +33,7 @@ export const Movie: React.FC<{ data: MovieData }> = ({data}) => {
                        setIsMovieHighlighted(false);
                    }}
         >
-            <Card.Img className='w-25' src={data.image}/>
+            <Card.Img className='w-25' src={imageUrl}/>
             <Container className='w-50 mx-2 my-3'>
                 <Card.Title>
                     <span>{data.title}</span>
